@@ -14,11 +14,17 @@ import java.util.ArrayList;
 public class Certificador {
     private String nombre,codigo;
     private ArrayList<Certificaciones> lista;
-
-    public Certificador(String nombre, String codigo, ArrayList<Certificaciones> lista) {
+    public boolean activo;
+    public ColaE colaE;
+    public ColaT colaT;
+      
+    public Certificador(String nombre, String codigo, ArrayList<Certificaciones> lista, boolean activo,ColaE colaE,ColaT colaT){
         this.nombre = nombre;
         this.codigo = codigo;
         this.lista = lista;
+        this.activo=activo;
+        this.colaE=colaE;
+        this.colaT=colaT;
     }
 
     public String getNombre() {
@@ -43,5 +49,13 @@ public class Certificador {
 
     public void setLista(ArrayList<Certificaciones> lista) {
         this.lista = lista;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }
