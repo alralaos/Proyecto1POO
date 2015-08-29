@@ -18,14 +18,14 @@ import java.io.IOException;
 public class ArchivosTXT {
     private File archivo;
 
-    public ArchivosTXT() {
+    public ArchivosTXT(File archivo) {
+        this.archivo=archivo;
     }
     
     // path example: 0C:\Users\Alcides\Documents\NetBeansProjects\Tarea4_AlcidesLara\tabal1.txt
-    public String leer(String nombre){
+    public String leer(){
         try{            
-            File f = new File(nombre); // abro el archivo a leer
-            FileReader lectorArchivo = new FileReader(f); // creo el canal para leer el archivo
+            FileReader lectorArchivo = new FileReader(archivo); // creo el canal para leer el archivo
             BufferedReader br = new BufferedReader(lectorArchivo); // almacenamiento de toda la informacion del txt
             String l=""; // variables donde se almacena informacion
             String aux=""; // variables donde se almacena informacion
@@ -47,8 +47,7 @@ public class ArchivosTXT {
         return null;
     }
     
-    public void Escribir(String informacion,String nombre){ // funcion que nos permite escribir en un archivo txt
-        this.archivo=new File(nombre+".txt"); // crea un nuevo archivo de texto
+    public void Escribir(String informacion){ // funcion que nos permite escribir en un archivo txt
         try{
             FileWriter escribir=new FileWriter(archivo,true); // abro el canal para escribir en el txt
             escribir.write(informacion); // escribo en el txt

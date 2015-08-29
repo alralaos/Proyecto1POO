@@ -18,13 +18,13 @@ public class Certificador {
     public ColaE colaE;
     public ColaT colaT;
       
-    public Certificador(String nombre, String codigo, ArrayList<Certificaciones> lista, boolean activo,ColaE colaE,ColaT colaT){
+    public Certificador(String nombre, String codigo, ArrayList<Certificaciones> lista, boolean activo){
         this.nombre = nombre;
         this.codigo = codigo;
         this.lista = lista;
         this.activo=activo;
-        this.colaE=colaE;
-        this.colaT=colaT;
+        this.colaE=new ColaE();
+        this.colaT=new ColaT();
     }
 
     public String getNombre() {
