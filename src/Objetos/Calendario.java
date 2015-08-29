@@ -18,7 +18,6 @@ public class Calendario {
     private int hora;
     private int minuto;
     private int seg;
-    private int miliSeg;
     
     public Calendario(){
         Calendar cal1 = Calendar.getInstance();
@@ -28,6 +27,29 @@ public class Calendario {
         hora=cal1.get(Calendar.HOUR);
         minuto=cal1.get(Calendar.MINUTE);
         seg=cal1.get(Calendar.SECOND);
-        miliSeg=cal1.get(Calendar.MILLISECOND);
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public int getHora() {
+        return hora;
+    }
+
+    public int getMinuto() {
+        return minuto;
+    }
+
+    public int getSeg() {
+        return seg;
     }
 }
