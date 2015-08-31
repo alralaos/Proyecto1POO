@@ -18,8 +18,8 @@ import java.io.IOException;
 public class ArchivosTXT {
     private File archivo;
 
-    public ArchivosTXT(File archivo) {
-        this.archivo=archivo;
+    public ArchivosTXT(String nombre) {
+        this.archivo=new File(nombre+".txt");
     }
     
     // path example: 0C:\Users\Alcides\Documents\NetBeansProjects\Tarea4_AlcidesLara\tabal1.txt

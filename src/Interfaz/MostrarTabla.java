@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Objetos.ArchivosTXT;
 import java.io.File;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +19,6 @@ import javax.swing.JOptionPane;
  */
 public final class MostrarTabla extends javax.swing.JFrame {
     private DefaultTableModel model=new DefaultTableModel(); // variables donde se almacena informacion
-    private String path=""; // variables donde se almacena informacion
     private String tabla=""; // variables donde se almacena informacion
     private File archivo;
    
@@ -43,13 +43,29 @@ public final class MostrarTabla extends javax.swing.JFrame {
     }
         
     private void TablaCertificacion(){ // metodo que crea la tabla de manera grafica
-        int cont=1; // contador para ver cuando parar
-                
+        ArchivosTXT archivo= new ArchivosTXT("certificaciones");                
+        String info=archivo.leer();
+        String inf[]=info.split("%");
+        int cont=0;
+        while(cont!=inf.length){
+            String data[]=inf[cont].split("!");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); // crear canal para poder agregar una fila a la tabla
+            model.addRow(new Object[]{data[0],data[1],data[2]}); // asignacion de datos a cada casilla de la fila
+            cont++;
+        }
     }
     
     public void TablaCertificador(){        
-        int cont=0; // inicializo el contador en cero
-         
+        ArchivosTXT archivo= new ArchivosTXT("certificadores");                
+        String info=archivo.leer();
+        String inf[]=info.split("%");
+        int cont=0;
+        while(cont!=inf.length){
+            String data[]=inf[cont].split("!");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); // crear canal para poder agregar una fila a la tabla
+            model.addRow(new Object[]{data[0],data[1],data[2],data[3]}); // asignacion de datos a cada casilla de la fila
+            cont++;
+        }
     }
     
 //Convierte un numero en notacion cientifica a numero normal
@@ -59,7 +75,37 @@ public final class MostrarTabla extends javax.swing.JFrame {
       return num.format(valor);
     }
 
-    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Contraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Contraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Contraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Contraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MostrarTabla(true).setVisible(true);
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
