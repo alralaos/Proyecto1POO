@@ -17,28 +17,31 @@ import javax.swing.JOptionPane;
  *
  * @author Alcides
  */
-public final class MostrarTabla extends javax.swing.JFrame {
+public final class MostrarColas extends javax.swing.JFrame {
     private DefaultTableModel model=new DefaultTableModel(); // variables donde se almacena informacion
    
-    public MostrarTabla(boolean certificacion) {                
-        if(certificacion){
-            model.addColumn("Nombre"); // agrago una columna a la tabla
-            model.addColumn("Codigo"); // agrago una columna a la tabla
-            model.addColumn("Peso"); // agrago una columna a la tabla
+    public MostrarColas(String nombre) {                
+        if("".equals(nombre)){
+            //id, solicitante,tipo, fecha y hora de registro
+            model.addColumn("ID"); // agrago una columna a la tabla
+            model.addColumn("Solicitante"); // agrago una columna a la tabla
+            model.addColumn("Tipo"); // agrago una columna a la tabla
+            model.addColumn("Fecha"); // agrago una columna a la tabla
+            model.addColumn("Hora"); // agrago una columna a la tabla
             initComponents();   // envio de informacion para mostrar tabla desde un archivo de texto
-            TablaCertificacion();
-            TablaCertificacion();
+            TablaColaG();
         }else{
             model.addColumn("Nombre"); // agrago una columna a la tabla
             model.addColumn("Codigo"); // agrago una columna a la tabla
             model.addColumn("Certificaciones"); // agrago una columna a la tabla
             model.addColumn("Estado");
-            initComponents();   // envio de informacion para mostrar tabla desde un archivo de texto            TablaCertificador();
+            initComponents();   // envio de informacion para mostrar tabla desde un archivo de texto
+            TablaColaP();
         }
     }
         
-    private void TablaCertificacion(){ // metodo que crea la tabla de manera grafica
-        ArchivosTXT archivo= new ArchivosTXT("certificaciones");                
+    private void TablaColaG(){ // metodo que crea la tabla de manera grafica
+        ArchivosTXT archivo= new ArchivosTXT("Colas");                
         String info=archivo.leer();
         String inf[]=info.split("%");
         int cont=0;
@@ -50,8 +53,8 @@ public final class MostrarTabla extends javax.swing.JFrame {
         }
     }
     
-    public void TablaCertificador(){        
-        ArchivosTXT archivo= new ArchivosTXT("certificadores");                
+    public void TablaColaP(){        
+        ArchivosTXT archivo= new ArchivosTXT("Colas");                
         String info=archivo.leer();
         String inf[]=info.split("%");
         int cont=0;

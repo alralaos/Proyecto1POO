@@ -57,4 +57,9 @@ public class ArchivosTXT {
             System.out.println("Error al escribir");
         }
     }
+    
+    public static void main(String args[]) {
+        ArchivosTXT hola=new ArchivosTXT("prueba");
+        System.out.println(hola.leer());
+    }
 }
