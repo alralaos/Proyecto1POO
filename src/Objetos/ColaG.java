@@ -10,5 +10,13 @@ package Objetos;
  * @author Alcides
  */
 public class ColaG {
+    public NodoC primerNodo;
+    public NodoC ultimoNodo;
+
+    public ColaG() {
+        this.primerNodo = null;
+        this.ultimoNodo = null;
+    }
+    
     
 }

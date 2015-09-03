@@ -6,6 +6,7 @@
 package Objetos;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -49,9 +50,11 @@ public class ArchivosTXT {
     
     public void Escribir(String informacion){ // funcion que nos permite escribir en un archivo txt
         try{
-            FileWriter escribir=new FileWriter(archivo,true); // abro el canal para escribir en el txt
-            escribir.write(informacion); // escribo en el txt
-            escribir.close(); // cierro el archivo txt
+             // abro el canal para escribir en el txt
+            FileWriter fw = new FileWriter(archivo.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(informacion);
+            bw.close();
         }
         catch(Exception e){
             System.out.println("Error al escribir");
@@ -60,6 +63,7 @@ public class ArchivosTXT {
     
     public static void main(String args[]) {
         ArchivosTXT hola=new ArchivosTXT("prueba");
+        hola.Escribir("otra palabra");
         System.out.println(hola.leer());
     }
 }
